@@ -1,0 +1,345 @@
+{
+  "configuration" : { },
+  "description" : "Description",
+  "documentation" : { },
+  "id" : 1,
+  "lastModifiedAgent" : "structurizr-javascript",
+  "lastModifiedDate" : "2024-04-13T21:51:13Z",
+  "model" : {
+    "people" : [ {
+      "description" : "Client de la boutique en ligne",
+      "id" : "1",
+      "location" : "Unspecified",
+      "name" : "Web customer",
+      "properties" : {
+        "structurizr.dsl.identifier" : "customer"
+      },
+      "relationships" : [ {
+        "description" : "Uses",
+        "destinationId" : "4",
+        "id" : "10",
+        "properties" : {
+          "structurizr.dsl.identifier" : "d15d26cb-daa7-49f9-b2e1-1c84e7fc7ab3"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Browse web store",
+        "destinationId" : "5",
+        "id" : "13",
+        "properties" : {
+          "structurizr.dsl.identifier" : "10f6d5e2-848f-478a-8360-451ca7f376ca"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship",
+        "technology" : "HTTPS"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "description" : "Gestion des paiements et de la facturation",
+      "documentation" : { },
+      "id" : "2",
+      "location" : "Unspecified",
+      "name" : "Payment & Billing",
+      "properties" : {
+        "structurizr.dsl.identifier" : "payment"
+      },
+      "tags" : "Element,Software System"
+    }, {
+      "description" : "Gestion des stocks et acheminement des commandes",
+      "documentation" : { },
+      "id" : "3",
+      "location" : "Unspecified",
+      "name" : "Logistics & Delivery",
+      "properties" : {
+        "structurizr.dsl.identifier" : "logistics"
+      },
+      "tags" : "Element,Software System"
+    }, {
+      "containers" : [ {
+        "description" : "Site web de la boutique en ligne",
+        "documentation" : { },
+        "id" : "5",
+        "name" : "Web Application",
+        "properties" : {
+          "structurizr.dsl.identifier" : "webapp"
+        },
+        "relationships" : [ {
+          "description" : "Manage commands through REST API",
+          "destinationId" : "6",
+          "id" : "14",
+          "properties" : {
+            "structurizr.dsl.identifier" : "28d45b72-f34c-4377-95a8-8e38f8be02c5"
+          },
+          "sourceId" : "5",
+          "tags" : "Relationship",
+          "technology" : "HTTPS"
+        }, {
+          "description" : "Get products through REST API",
+          "destinationId" : "7",
+          "id" : "15",
+          "properties" : {
+            "structurizr.dsl.identifier" : "93bcaf0d-1bcd-4bb5-8250-febe17863d9e"
+          },
+          "sourceId" : "5",
+          "tags" : "Relationship",
+          "technology" : "HTTPS"
+        } ],
+        "tags" : "Element,Container,Frontend",
+        "technology" : "Angular"
+      }, {
+        "description" : "Gestion des commandes web",
+        "documentation" : { },
+        "id" : "6",
+        "name" : "Command service",
+        "properties" : {
+          "structurizr.dsl.identifier" : "commandbackend"
+        },
+        "relationships" : [ {
+          "description" : "Get products through REST API",
+          "destinationId" : "7",
+          "id" : "16",
+          "properties" : {
+            "structurizr.dsl.identifier" : "b7c4f6f8-2b45-4059-bc3f-be11c1a1b664"
+          },
+          "sourceId" : "6",
+          "tags" : "Relationship",
+          "technology" : "HTTPS"
+        }, {
+          "description" : "Send delivery request",
+          "destinationId" : "3",
+          "id" : "17",
+          "properties" : {
+            "structurizr.dsl.identifier" : "5893f886-adb0-4498-9f94-28a651396863"
+          },
+          "sourceId" : "6",
+          "tags" : "Relationship",
+          "technology" : "Kafka topic"
+        }, {
+          "description" : "Send payment request",
+          "destinationId" : "2",
+          "id" : "18",
+          "properties" : {
+            "structurizr.dsl.identifier" : "052dcafe-940e-404b-b28a-dc35d71a5d85"
+          },
+          "sourceId" : "6",
+          "tags" : "Relationship",
+          "technology" : "HTTPS"
+        }, {
+          "description" : "Reads from and writes to",
+          "destinationId" : "8",
+          "id" : "19",
+          "properties" : {
+            "structurizr.dsl.identifier" : "d745a0aa-c325-417f-bb12-4a3088c4aef1"
+          },
+          "sourceId" : "6",
+          "tags" : "Relationship",
+          "technology" : "SQL/TCP"
+        } ],
+        "tags" : "Element,Container,Backend",
+        "technology" : "SpringBoot"
+      }, {
+        "description" : "Référentiel des produits de la boutique en ligne",
+        "documentation" : { },
+        "id" : "7",
+        "name" : "Web catalog",
+        "properties" : {
+          "structurizr.dsl.identifier" : "catalogbackend"
+        },
+        "relationships" : [ {
+          "description" : "Reads from",
+          "destinationId" : "9",
+          "id" : "20",
+          "properties" : {
+            "structurizr.dsl.identifier" : "ec957f7c-590b-4612-8eff-49aae112a794"
+          },
+          "sourceId" : "7",
+          "tags" : "Relationship",
+          "technology" : "SQL/TCP"
+        } ],
+        "tags" : "Element,Container,Backend",
+        "technology" : "SpringBoot"
+      }, {
+        "description" : "Stockage des commandes",
+        "documentation" : { },
+        "id" : "8",
+        "name" : "Command database",
+        "properties" : {
+          "structurizr.dsl.identifier" : "commanddb"
+        },
+        "tags" : "Element,Container,Database",
+        "technology" : "PostgreSQL"
+      }, {
+        "description" : "Stockage du catalogue",
+        "documentation" : { },
+        "id" : "9",
+        "name" : "Catalog database",
+        "properties" : {
+          "structurizr.dsl.identifier" : "catalogdb"
+        },
+        "tags" : "Element,Container,Database",
+        "technology" : "PostgreSQL"
+      } ],
+      "description" : "Permet aux clients de passer des commandes en ligne",
+      "documentation" : { },
+      "id" : "4",
+      "location" : "Unspecified",
+      "name" : "Devoxx Web Store",
+      "properties" : {
+        "structurizr.dsl.identifier" : "store"
+      },
+      "relationships" : [ {
+        "description" : "Uses",
+        "destinationId" : "2",
+        "id" : "11",
+        "properties" : {
+          "structurizr.dsl.identifier" : "875a7a92-da6b-4d71-970a-446f7d1b422b"
+        },
+        "sourceId" : "4",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Uses",
+        "destinationId" : "3",
+        "id" : "12",
+        "properties" : {
+          "structurizr.dsl.identifier" : "7ee3e41f-cc4a-443b-8b58-659e07e0c367"
+        },
+        "sourceId" : "4",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Software System"
+    } ]
+  },
+  "name" : "Name",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlIHsKCiAgICBtb2RlbCB7CiAgICAgICAgLy8gTW9kw6hsZQogICAgICAgIGN1c3RvbWVyID0gcGVyc29uICJXZWIgY3VzdG9tZXIiICJDbGllbnQgZGUgbGEgYm91dGlxdWUgZW4gbGlnbmUiCgogICAgICAgIHBheW1lbnQgPSBzb2Z0d2FyZVN5c3RlbSAiUGF5bWVudCAmIEJpbGxpbmciICJHZXN0aW9uIGRlcyBwYWllbWVudHMgZXQgZGUgbGEgZmFjdHVyYXRpb24iCiAgICAgICAgbG9naXN0aWNzID0gc29mdHdhcmVTeXN0ZW0gIkxvZ2lzdGljcyAmIERlbGl2ZXJ5IiAiR2VzdGlvbiBkZXMgc3RvY2tzIGV0IGFjaGVtaW5lbWVudCBkZXMgY29tbWFuZGVzIgogICAgICAgIHN0b3JlID0gc29mdHdhcmVTeXN0ZW0gIkRldm94eCBXZWIgU3RvcmUiICJQZXJtZXQgYXV4IGNsaWVudHMgZGUgcGFzc2VyIGRlcyBjb21tYW5kZXMgZW4gbGlnbmUiIHsKICAgICAgICAgICAgd2ViYXBwID0gY29udGFpbmVyICJXZWIgQXBwbGljYXRpb24iICJTaXRlIHdlYiBkZSBsYSBib3V0aXF1ZSBlbiBsaWduZSIgIkFuZ3VsYXIiICJGcm9udGVuZCIKICAgICAgICAgICAgY29tbWFuZEJhY2tlbmQgPSBjb250YWluZXIgIkNvbW1hbmQgc2VydmljZSIgIkdlc3Rpb24gZGVzIGNvbW1hbmRlcyB3ZWIiICJTcHJpbmdCb290IiAiQmFja2VuZCIKICAgICAgICAgICAgY2F0YWxvZ0JhY2tlbmQgPSBjb250YWluZXIgIldlYiBjYXRhbG9nIiAiUsOpZsOpcmVudGllbCBkZXMgcHJvZHVpdHMgZGUgbGEgYm91dGlxdWUgZW4gbGlnbmUiICJTcHJpbmdCb290IiAiQmFja2VuZCIKICAgICAgICAgICAgY29tbWFuZERiID0gY29udGFpbmVyICJDb21tYW5kIGRhdGFiYXNlIiAiU3RvY2thZ2UgZGVzIGNvbW1hbmRlcyIgIlBvc3RncmVTUUwiICJEYXRhYmFzZSIKICAgICAgICAgICAgY2F0YWxvZ0RiID0gY29udGFpbmVyICJDYXRhbG9nIGRhdGFiYXNlIiAiU3RvY2thZ2UgZHUgY2F0YWxvZ3VlIiAiUG9zdGdyZVNRTCIgIkRhdGFiYXNlIgogICAgICAgIH0KCiAgICAgICAgLy8gUmVsYXRpb25zIGRlcHVpcyAvIHZlcnMgbGVzIHN5c3TDqG1lcwogICAgICAgIGN1c3RvbWVyIC0+IHN0b3JlICJVc2VzIgogICAgICAgIHN0b3JlIC0+IHBheW1lbnQgIlVzZXMiCiAgICAgICAgc3RvcmUgLT4gbG9naXN0aWNzICJVc2VzIgoKICAgICAgICAvLyBSZWxhdGlvbnMgZGVwdWlzIC8gdmVycyBsZXMgY29udGFpbmVycwogICAgICAgIGN1c3RvbWVyIC0+IHdlYmFwcCAiQnJvd3NlIHdlYiBzdG9yZSIgIkhUVFBTIgogICAgICAgIHdlYmFwcCAtPiBjb21tYW5kQmFja2VuZCAiTWFuYWdlIGNvbW1hbmRzIHRocm91Z2ggUkVTVCBBUEkiICJIVFRQUyIKICAgICAgICB3ZWJhcHAgLT4gY2F0YWxvZ0JhY2tlbmQgIkdldCBwcm9kdWN0cyB0aHJvdWdoIFJFU1QgQVBJIiAiSFRUUFMiCiAgICAgICAgY29tbWFuZEJhY2tlbmQgLT4gY2F0YWxvZ0JhY2tlbmQgIkdldCBwcm9kdWN0cyB0aHJvdWdoIFJFU1QgQVBJIiAiSFRUUFMiCiAgICAgICAgY29tbWFuZEJhY2tlbmQgLT4gbG9naXN0aWNzICJTZW5kIGRlbGl2ZXJ5IHJlcXVlc3QiICJLYWZrYSB0b3BpYyIKICAgICAgICBjb21tYW5kQmFja2VuZCAtPiBwYXltZW50ICJTZW5kIHBheW1lbnQgcmVxdWVzdCIgIkhUVFBTIgogICAgICAgIGNvbW1hbmRCYWNrZW5kIC0+IGNvbW1hbmREYiAiUmVhZHMgZnJvbSBhbmQgd3JpdGVzIHRvIiAiU1FML1RDUCIKICAgICAgICBjYXRhbG9nQmFja2VuZCAtPiBjYXRhbG9nRGIgIlJlYWRzIGZyb20iICJTUUwvVENQIgogICAgfQoKICAgIHZpZXdzIHsKICAgICAgICAvLyBEaWFncmFtbWVzCiAgICAgICAgc3lzdGVtY29udGV4dCBzdG9yZSAiRGV2b3h4U3RvcmVDb250ZXh0IiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvTGF5b3V0CiAgICAgICAgfQoKICAgICAgICBjb250YWluZXIgc3RvcmUgIkRldm94eFN0b3JlQ29udGFpbmVycyIgewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgLy9hdXRvTGF5b3V0CiAgICAgICAgfQoKICAgICAgICAvLyBUaMOobWVzIGV0IHN0eWxlcwogICAgICAgIHRoZW1lIGRlZmF1bHQKCiAgICAgICAgc3R5bGVzIHsKICAgICAgICAgICAgZWxlbWVudCAiRGF0YWJhc2UiIHsKICAgICAgICAgICAgICAgIHNoYXBlIEN5bGluZGVyCiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICM5OTk5OTkKICAgICAgICAgICAgfQoKICAgICAgICAgICAgZWxlbWVudCAiRnJvbnRlbmQiIHsKICAgICAgICAgICAgICAgIHNoYXBlIFdlYkJyb3dzZXIKICAgICAgICAgICAgICAgIGljb24gImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBQ0FBQUFBZ0NBWUFBQUJ6ZW5yMEFBQUFBWE5TUjBJQXJzNGM2UUFBQllaSlJFRlVXRWVkbDMxc1UyVVV4cDl6YnplMk1SampZekErbFNFcUROaGExazdJNWtLQzREcTJJYUdHRUJTVUdJTWtCSU9KUVFmN0FQN0FFR0pRQWZrSUlvb0k2MFpjQkUwSXFKZ1lDWlIxQlFUR1dOdXhPY0VoSDF0aDdiMUhldSs2clYzYnRiei8zZnVlNTd5Lys5enp2dmRjd2xPTWxrekRGQSt4NlNHanVFRnkxOHZNVmE1MnNjYlVjUDVldE9rb1VrR2pOdnRGa1hneEF5WXdwbnAxRDFuR1RjbmpTOUVKNEJUQVpoTHBlTDdGY2p1UzNHRUJidXAwTDRpeVpqR0lUUUNsQnlZTUFPZzlMWUZ4bGdSVWlwS21lcDd0bkRNVVRCK0FwaG42eVI2QlRRSUpKZ0RUd2oxRmh5aml4bU5YZncvS0FKOGpKak1MY3BXeHR2WmFiNEVDNE5TK05Ja2hlWi9TdStpTS9qTDY1cFBXcnNHRnc5K2lvK2xXcEJJQWJQUENDRExNOHk5WmFzbVpxZitkaVdaRmtVRUpGWktUTWJxbUdrMG5UcUt1dEN4YXVSSlB6R2ZJcnRYL1JhRG5vODJRdEhvVkJxOTRBK3p4NEplaWhWRzYwTFVhODgvazBCcE9BcGdYRFlBd0tCR3BOZFVRRWhNVm1iT3FHbldsNWRHa1VCMEFkcEpkYTloTndEdlJxQWUvdFJ4Sjc3M2JMWkc5TGhRdWhPdFdOTFVBTVBnRGNtajE2d0hhSENrQXhjVXA3MTVJSHVJbmNacXJVVmNXblF0TXRJZ2FNN0tXQ29Kd0tGS0F4Q1d2STNuZFdpVzgvWG85RXRJbWdnUUJxZ3ZGY04xcWpqUVY0T0ZNc21ka3p5YUJ6MGFpb3BnWXBCNnZoRGd5UlFsdlhMMEdNZk5md1pnQ28xb0w1aXJVbFZWRWtrcXRnWTdZSkdxYWJoZ3JheER5cE9xZGJXQnhJWWFXckZkdXVXODBvTjYwQksyalIrSGxhak5JRkZVWEZoVEQxUnlSQzNlTVZzc0lZa0J3YWczZTR5dzJMTG9nSU5WOEJKcHg0NVN3dG9vdGFLMnFWcjRGMDh0TE1iYW9VSFdoMG95NjhrMlJ1UENuMFdveEtDZWhRNnV2QnlndG5DcGgzbHdNMjZMYUs3VzFvY1ZZakFlUEh5a0FDV1BISVBkNEZRU05wc3VGSXJpYVc4SkNFUEJkdnRXeVJBR3dhdzJuQ0pnVFVrR0VVWWUvUnN4ems1U1FlN3YyNFA2ZWZYNWZ3L1FOSDJQOG90ZVVlVWVsR2JaK1hHRHdsZ0xyeFkrNkhERHNmOEt4SWhSQVhHNE9SbXovUkpsbVNjSS95MWRDdXZzZk9wamhsTjNLL2ZqVVZCajJmcW51Q0xkYnJZV1cwQzR3c0xMQWF0bW5mb3d5RFJ1WUVQSkFUem13RndPbTlma2FoN1hZY2N3TVcwWG9XbUJKbmxOd3FmYTArZ295OUcrU1FBZUNaUnd3VTRlVTNaOUhVbFIrTWYyNjRNWXp4aXNXdStwQVJuWWVDM3c2MkNvanZ0aUJPRU9XTXRWNTdUcmNWM3MrNXg1bVBHRFpUNVkwWlFvR2RkV0s0MWdsYkJWQkQ5bk9kcXNsd1FSSUNrRGpkUDJ6Z29ZYUFnRmkwNmRpNUZmN3VtKzNMbCtKempwYjkzV3dqbWpJdEhUTU9uUlFpUW5qd25XajFUTFpHNk1BY0Y2ZXhubmY5UWlBMkJ0aStMYXRpTS9MVlovKzhoVzBMdk92MDFBdFdmYit2UmlxMDZvN0lvZ0xCUHlVYjdYTTd3WlFBclY2TzBEamZRQXhhUk14NnNnM0FLbGRXOXZHY3JUWC9PaG5VaWlBbE53Y3pOenhhUzhYaXVCcStidGJ5OERPQXF0bFZRQ0E0ZGNuWFcyT0wycm9waklNZkZWdEU2UzdkOUdTWHdUdTlEYStQU05rVTBxRTNNcnZrWmltbm0yT281V3diZXFwQlNLc3k2KzFiUE1Ec0dzTkJ3bFk1a3NmbHpOYjJkUDg2REdrTzNlVXN6OXdoT21La1pnMkVRTW5USUFZSHcvSU1wcFBlUHNlZFJDb01OOTY0UWMvZ0JzNlhaS0d4YlVBdlUvQW9ENnJCYmtSRGlDRS9nK1c1UFhlL2Q4REV4RFpyTk1OOThpYUQwSHd2cVA0Y0NCUkFGd0VVWW14OWtKTllMNlFQeWEzTTJlUGRzRmR3a1J2RXhBVERLUi9BTDRLbVRmazIycVBrcmNEQ3pMNi9UVno2SFJweEpxTnpMd1VSRUpFUlFqWXdWeDZidGlRUTZWbnpuVC91ejBWZ0U5a241RTFWUkNwZ2tIRnZ2T2pqd09NRm9BM3QwdWRlMHlYTC90dm1SRHZzbDhIQW5XT2pLd3NrTEFaaExrK0FHTDhDL0JXS1ZiOGJNSDU4eDJSRkhESUlveFVmRE5qWmw0SFVVbWpKUDBXKzVDMnozMktYM1B2V3Y4RDh4aGIwczQ5L1gwQUFBQUFTVVZPUks1Q1lJST0iCiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIGVsZW1lbnQgIkJhY2tlbmQiIHsKICAgICAgICAgICAgICAgIGljb24gImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxBQUFCQUFFQUlDQUFBQUVBSUFDb0VBQUFGZ0FBQUNnQUFBQWdBQUFBUUFBQUFBRUFJQUFBQUFBQUFCQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQVJMeG9BRU82WVFCRnZXZ0FSYjFvT0VXOWFMNUZ2V2o2UmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8ra1c5YUx0RnZXZzFSYjFvQUVhK2FRQkR2R2NBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQkZ2V2dBUmIxb0FFVzlhQ2hGdldqUlJiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhTTVGdldnbFJiMW9BRVc5YUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQVJMeG5BRVc5YUFCRnZXY0JSYjFvbEVXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFJOUV2V2NCUmIxb0FFVzhad0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQkZ2V2dBUmIxb0FFVzlhRFJGdldqcFJiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW81MFc5YURGRnZXZ0FSYjFvQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQVJMeG9BRVc5YUFCRnZXZ0RSYjFvbTBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxb2wwVzlhQUpGdldnQVJMeG5BQUFBQUFBQUFBQUFBQUFBQUFBQUFBQkZ2V2dBUmIxb0FFVzlhRHRGdldqdFJiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXanJSYjFvTjBXOWFBQkZ2V2dBQUFBQUFBQUFBQUFBQUFBQVJMMW9BRVc5YUFCRnZXZ0ZSYjFvbzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvOVVXOWFOcEZ2V2pIUmIxb3lVVzlhTjlGdldqNFJiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldpZVJiMW9CRVc5YUFCRXZXZ0FBQUFBQUFBQUFBQkZ2V2dBUmIxb0FFVzlhRUZGdldqd1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxbzdFVzlhSmRGdldoRVJiMW9Ha1c5YUExRnZXZ09SYjFvSGtXOWFFNUZ2V2ltUmIxbzlFVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFPNUZ2V2c5UmIxb0FFVzlhQUFBQUFBQVJiMW9BRVc5YUFCRnZXZ0hSYjFvcWtXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YU1wRnZXaEJSTDFuQVVXOWFBQkZ2V2dBUmIxb0FFVzlhQUJGdldnQVJiMW9BRVc5YUFWRnZXaFVSYjFvMmtXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YUtWRnZXZ0dSYjFvQUVTOWFBQkZ2V2dBUmIxb0FFVzlhRWRGdldqelJiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2pFUmIxb0prVzlhQUJFdldjQlJiMW9MMFc5YUhGRnZXaVZSYjFva2tXOWFHbEZ2V2dsUmIxb0FFVzlhQUJGdldnNFJiMW8yRVc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxbzhVVzlhRU5GdldnQVJiMW9BRVc5YUFCRnZXZ0pSYjFvc1VXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW80VVc5YURSRnZXZ0FSYjFvRDBXOWFJTkZ2V2pvUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YU41RnZXaHVSYjFvQjBXOWFBQkZ2V2hNUmIxbzcwVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvclVXOWFBaEZ2V2dBUmIxb0FFVzlhRTVGdldqMlJiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQNUZ2V2gxUmIxb0FFVzlhQXRGdldpYlJiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUHBGdldpQVJiMW9BMFM5WndGRnZXaVRSYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqMFJiMW9Ta1c5YUFCRnZXZ09SYjFvdGtXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8yRVc5YUIxRnZXZ0FSYjFvYkVXOWFQeEZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQUkZ2V2hQUmIxb0FFVzlhREpGdldqcVJiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2l5UmIxb0RFVzlhR0ZGdldqMlJiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2lXUmIxb0FFVzlhQmxGdldqVFJiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YUxsRnZXZ0tSYjFvQmtXOWFMUkZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVBWRnZXaGNSYjFvelVXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8va1c5YUY5RnZXZ0FSYjFvVVVXOWFQcEZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8rRVc5YVBwRnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxbzcwVzlhRFJGdldnQVJiMW9mMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhTWhGdldqNlJiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2oyUmIxb1FFVzlhQUJGdldoOVJiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFPRkZ2V2hVUmIxb1pVVzlhTzVGdldqL1JiMW8vMFc5YVA5RnZXaitSYjFvWEVXOWFBQkZ2V2hkUmIxby9rVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvOTBXOWFQcEZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVBGRnZXZzFSYjFvQUVXOWFJNUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW9wRVc5YUFCRnZXZ0lSYjFvd1VXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldoc1JiMW9BRVc5YUZGRnZXajhSYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqM1JiMW96VVc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxbzlFVzlhRHRGdldnQVJiMW9oRVc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2lkUjcxcEFFVzlhQWRGdldpNlJiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFHSkZ2V2dBUmIxb1dFVzlhUDFGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFNaEZ2V2hoUmIxbzlrVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXajhSYjFvVlVXOWFBQkZ2V2hkUmIxby9rVzlhUDlGdldqL1JiMW8vMFc5YUo1SHZXa0FSYjFvQjBXOWFMdEZ2V2ovUmIxby8wVzlhUDlGdldqMFJiMW9QMFc5YUFCRnZXaDBSYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqMVJiMW9YRVc5YUE1RnZXaTJSYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldpR1JiMW9BRVc5YUNaRnZXamlSYjFvLzBXOWFQOUZ2V2ovUmIxb25rZTlhUUJGdldnSFJiMW91MFc5YVA5RnZXai9SYjFvLzBXOWFNdEZ2V2dUUmIxbkFVVzlhS1ZGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFMSkZ2V2dNUmIxb0FFVzlhRTVGdldqMlJiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFNaEZ2V2dSUjc1cEFFVzlhSXRGdldqL1JiMW8vMFc5YVA5RnZXaWVSNzFwQUVXOWFBZEZ2V2k3UmIxby8wVzlhUDlGdldqOVJiMW9ha1c5YUFCRnZXZ2lSYjFvM2tXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqMFJiMW9TVVc5YUFCRnZXZ0FSYjFvQ1VXOWFMRkZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8rVVc5YUZoRnZXZ0FSYjFvRzBXOWFNQkZ2V2ovUmIxby8wVzlhSjVIdldrQVJiMW9CMFc5YUx0RnZXai9SYjFvLzBXOWFLWkZ2V2dOUmIxb0FFVzlhSFZGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFLeEZ2V2dJUmIxb0FFVzlhQUJGdldnQVJiMW9SMFc5YVBORnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxb3lrVzlhQnRGdldnQVJiMW9KMFc5YU1wRnZXai9SYjFvbmtlOWFRQkZ2V2dIUmIxb3UwVzlhUDlGdldpeVJiMW9GMFc5YUFCRnZXZ3RSYjFvM1VXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqeFJiMW9RMFc5YUFCRnZXZ0FSYjFvQUVXOWFBQkZ2V2dIUmIxb3FrVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvbjBXOWFBMUZ2V2dBUmIxb2lFVzlhUDlGdldpZVI3MXBBRVc5YUFkRnZXaTdSYjFvLzBXOWFHQkZ2V2dBUmIxb0dVVzlhTGRGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFLVkZ2V2dHUmIxb0FFVzlad0FBQUFBQVJiMW9BRVc5YUFCRnZXaEJSYjFvOEVXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqOVJiMW9va1c5YUZ4RnZXalJSYjFvLzBXOWFKMUh2V2tBUmIxb0IwVzlhTHBGdldqL1JiMW91RVc5YUZSRnZXaTFSYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqdVJiMW9QVVc5YUFCRnZXZ0FBQUFBQUFBQUFBQkV2V2dBUmIxb0FFVzlhQVZGdldpalJiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby9VVzlhUDlGdldqL1JiMW9xRWE5YVFCRnZXZ0tSYjFveEVXOWFQOUZ2V2ovUmIxby9FVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFKNUZ2V2dFUmIxb0FFUzlad0FBQUFBQUFBQUFBQUFBQUFCRnZXZ0FSYjFvQUVXOWFEdEZ2V2p0UmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2puUmIxb2FVVzlhSHBGdldqelJiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqcVJiMW9OMFc5YUFCRnZXZ0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFFUzhhQUJGdldnQVJiMW9BMFc5YUp0RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXaitSYjFvL2tXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFKWkZ2V2dDUmIxb0FFUzlad0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUVXOWFBQkZ2V2dBUmIxb05FVzlhT2xGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqblJiMW9NVVc5YUFCRnZXZ0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQVJMeG5BRVc5YUFCRnZXY0JSYjFvbEVXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFJOUV2R2NCUmIxb0FFUzlad0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBUmIxb0FFVzlhQUJGdldnb1JiMW8wVVc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqT1JiMW9KVVc5YUFCRnZXZ0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFCRXZHZ0FRN2xmQUVXOWFBQkZ2V2czUmIxb3ZrVzlhUHBGdldqL1JiMW8vMFc5YVA5RnZXai9SYjFvLzBXOWFQOUZ2V2ovUmIxby8wVzlhUDlGdldqL1JiMW8vMFc5YVA5RnZXajZSYjFvdTBXOWFEVkZ2V2dBUnI1cEFFUzhaZ0FBQUFBQUFBQUFBQUFBQUFBQUFBQUE4QUFBRC9BQUFBL2dBQUFINEFBQUI4QUFBQVBBQUFBRGdBQUFBWUFBQUFFQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQWdBQUFBWUFBQUFIQUFBQUR3QUFBQStBQUFBZmdBQUFIOEFBQUQvQUFBQTg9IgogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfQp9Cg=="
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "lastSavedView" : "DevoxxStoreContext",
+      "metadataSymbols" : "SquareBrackets",
+      "styles" : {
+        "elements" : [ {
+          "background" : "#999999",
+          "shape" : "Cylinder",
+          "tag" : "Database"
+        }, {
+          "icon" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAABYZJREFUWEedl31sU2UUxp9zbze2MRjjYzA+lSEqDNha1k7I5kKC4Dq2IaGGEBSUGIMkBIOJQQf7AP7AEGJQAfkIIooI60ZcBE0IqJgYCZR1BQTGWNuxOcEhH1th7b1Heu+6rV3btbz/3fue57y/+9zzvvdcwlOMlkzDFA+x6SGjuEFy18vMVa52scbUcP5etOkoUkGjNvtFkXgxAyYwpnp1D1nGTcnjS9EJ4BTAZhLpeL7FcjuS3GEBbup0L4iyZjGITQClByYMAOg9LYFxlgRUipKmep7tnDMUTB+Aphn6yR6BTQIJJgDTwj1FhyjixmNXfw/KAJ8jJjMLcpWxtvZab4EC4NS+NIkheZ/Su+iM/jL65pPWrsGFw9+io+lWpBIAbPPCCDLM8y9ZasmZqf+diWZFkUEJFZKTMbqmGk0nTqKutCxauRJPzGfIrtX/RaDno82QtHoVBq94A+zx4JeihVG60LUa88/k0BpOApgXDYAwKBGpNdUQEhMVmbOqGnWl5dGkUB0AdpJda9hNwDvRqAe/tRxJ773bLZG9LhQuhOtWNLUAMPgDcmj16wHaHCkAxcUp715IHuIncZqrUVcWnQtMtIgaM7KWCoJwKFKAxCWvI3ndWiW8/Xo9EtImggQBqgvFcN1qjjQV4OFMsmdkzyaBz0aiopgYpB6vhDgyRQlvXL0GMfNfwZgCo1oL5irUlVVEkkqtgY7YJGqabhgraxDypOqdbWBxIYaWrFduuW80oN60BK2jR+HlajNIFFUXFhTD1RyRC3eMVssIYkBwag3e4yw2LLogINV8BJpx45SwtootaK2qVr4F08tLMbaoUHWh0oy68k2RuPCn0WoxKCehQ6uvBygtnCph3lwM26LaK7W1ocVYjAePHykACWPHIPd4FQSNpsuFIriaW8JCEPBdvtWyRAGwaw2nCJgTUkGEUYe/Rsxzk5SQe7v24P6efX5fw/QNH2P8oteUeUelGbZ+XGDwlgLrxY+6HDDsf8KxIhRAXG4ORmz/RJlmScI/y1dCuvsfOpjhlN3K/fjUVBj2fqnuCLdbrYWW0C4wsLLAatmnfowyDRuYEPJATzmwFwOm9fkah7XYccwMW0XoWmBJnlNwqfa0+goy9G+SQAeCZRwwU4eU3Z9HUlR+Mf264MYzxisWu+pARnYeC3w62CojvtiBOEOWMtV57TrcV3s+5x5mPGDZT5Y0ZQoGddWK41glbBVBD9nOdqslwQRICkDjdP2zgoYaAgFi06di5Ff7um+3Ll+Jzjpb93WwjmjItHTMOnRQiQnjwnWj1TLZG6MAcF6exnnf9QiA2Bti+LatiM/LVZ/+8hW0LvOv01AtWfb+vRiq06o7IogLBPyUb7XM7wZQArV6O0DjfQAxaRMx6sg3AKldW9vGcrTX/OhnUiiAlNwczNzxaS8XiuBq+btby8DOAqtlVQCA4dcnXW2OL2ropjIMfFVtE6S7d9GSXwTu9Da+PSNkU0qE3MrvkZimnm2Oo5WwbeqpBSKsy6+1bPMDsGsNBwlY5ksflzNb2dP86DGkO3eUsz9whOmKkZg2EQMnTIAYHw/IMppPePsedRCoMN964Qc/gBs6XZKGxbUAvU/AoD6rBbkRDiCE/g+W5PXe/d8DExDZrNMN98iaD0HwvqP4cCBRAFwEUYmx9kJNYL6QPya3M2ePdsFdwkRvExATDKR/AL4KmTfk22qPkrcDCzL6/TVz6HRpxJqNzLwUREJERQjYwVx6btiQQ6VnznT/uz0VgE9kn5E1VRCpgkHFvvOjjwOMFoA3t0ude0yXL/tvmRDvsl8HAnWOjKwskLAZhLk+AGL8C/BWKVb8bMH58x2RFHDIIoxUfDNjZl4HUUmjJP0W+5C2z32KX3PvWv8D8xhb0s49/X0AAAAASUVORK5CYII=",
+          "shape" : "WebBrowser",
+          "tag" : "Frontend"
+        }, {
+          "icon" : "data:image/png;base64,AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARLxoAEO6YQBFvWgARb1oOEW9aL5FvWj6Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o+kW9aLtFvWg1Rb1oAEa+aQBDvGcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABFvWgARb1oAEW9aChFvWjRRb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aM5FvWglRb1oAEW9aAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARLxnAEW9aABFvWcBRb1olEW9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aI9EvWcBRb1oAEW8ZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABFvWgARb1oAEW9aDRFvWjpRb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o50W9aDFFvWgARb1oAAAAAAAAAAAAAAAAAAAAAAAAAAAARLxoAEW9aABFvWgDRb1om0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1ol0W9aAJFvWgARLxnAAAAAAAAAAAAAAAAAAAAAABFvWgARb1oAEW9aDtFvWjtRb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWjrRb1oN0W9aABFvWgAAAAAAAAAAAAAAAAARL1oAEW9aABFvWgFRb1oo0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o9UW9aNpFvWjHRb1oyUW9aN9FvWj4Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWieRb1oBEW9aABEvWgAAAAAAAAAAABFvWgARb1oAEW9aEFFvWjwRb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o7EW9aJdFvWhERb1oGkW9aA1FvWgORb1oHkW9aE5FvWimRb1o9EW9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aO5FvWg9Rb1oAEW9aAAAAAAARb1oAEW9aABFvWgHRb1oqkW9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aMpFvWhBRL1nAUW9aABFvWgARb1oAEW9aABFvWgARb1oAEW9aAVFvWhURb1o2kW9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aKVFvWgGRb1oAES9aABFvWgARb1oAEW9aEdFvWjzRb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWjERb1oJkW9aABEvWcBRb1oL0W9aHFFvWiVRb1okkW9aGlFvWglRb1oAEW9aABFvWg4Rb1o2EW9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o8UW9aENFvWgARb1oAEW9aABFvWgJRb1osUW9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o4UW9aDRFvWgARb1oD0W9aINFvWjoRb1o/0W9aP9FvWj/Rb1o/0W9aN5FvWhuRb1oB0W9aABFvWhMRb1o70W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1orUW9aAhFvWgARb1oAEW9aE5FvWj2Rb1o/0W9aP9FvWj/Rb1o/0W9aP5FvWh1Rb1oAEW9aAtFvWibRb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aPpFvWiARb1oA0S9ZwFFvWiTRb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj0Rb1oSkW9aABFvWgORb1otkW9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o2EW9aB1FvWgARb1obEW9aPxFvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aPRFvWhPRb1oAEW9aDJFvWjqRb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWiyRb1oDEW9aGFFvWj2Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWiWRb1oAEW9aBlFvWjTRb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aLlFvWgKRb1oBkW9aLRFvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aPVFvWhcRb1ozUW9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/kW9aF9FvWgARb1oUUW9aPpFvWj/Rb1o/0W9aP9FvWj/Rb1o+EW9aPpFvWj/Rb1o/0W9aP9FvWj/Rb1o70W9aDRFvWgARb1of0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aMhFvWj6Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj2Rb1oQEW9aABFvWh9Rb1o/0W9aP9FvWj/Rb1o/0W9aOFFvWhURb1oZUW9aO5FvWj/Rb1o/0W9aP9FvWj+Rb1oXEW9aABFvWhdRb1o/kW9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o90W9aPpFvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aPFFvWg1Rb1oAEW9aI5FvWj/Rb1o/0W9aP9FvWj/Rb1opEW9aABFvWgIRb1owUW9aP9FvWj/Rb1o/0W9aP9FvWhsRb1oAEW9aFFFvWj8Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj3Rb1ozUW9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o9EW9aDtFvWgARb1ohEW9aP9FvWj/Rb1o/0W9aP9FvWidR71pAEW9aAdFvWi6Rb1o/0W9aP9FvWj/Rb1o/0W9aGJFvWgARb1oWEW9aP1FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aMhFvWhhRb1o9kW9aP9FvWj/Rb1o/0W9aP9FvWj8Rb1oVUW9aABFvWhdRb1o/kW9aP9FvWj/Rb1o/0W9aJ5HvWkARb1oB0W9aLtFvWj/Rb1o/0W9aP9FvWj0Rb1oP0W9aABFvWh0Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj1Rb1oXEW9aA5FvWi2Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWiGRb1oAEW9aCZFvWjiRb1o/0W9aP9FvWj/Rb1onke9aQBFvWgHRb1ou0W9aP9FvWj/Rb1o/0W9aMtFvWgTRb1nAUW9aKVFvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aLJFvWgMRb1oAEW9aE5FvWj2Rb1o/0W9aP9FvWj/Rb1o/0W9aMhFvWgRR75pAEW9aItFvWj/Rb1o/0W9aP9FvWieR71pAEW9aAdFvWi7Rb1o/0W9aP9FvWj9Rb1oakW9aABFvWgiRb1o3kW9aP9FvWj/Rb1o/0W9aP9FvWj0Rb1oSUW9aABFvWgARb1oCUW9aLFFvWj/Rb1o/0W9aP9FvWj/Rb1o+UW9aFhFvWgARb1oG0W9aMBFvWj/Rb1o/0W9aJ5HvWkARb1oB0W9aLtFvWj/Rb1o/0W9aKZFvWgNRb1oAEW9aHVFvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aKxFvWgIRb1oAEW9aABFvWgARb1oR0W9aPNFvWj/Rb1o/0W9aP9FvWj/Rb1oykW9aBtFvWgARb1oJ0W9aMpFvWj/Rb1onke9aQBFvWgHRb1ou0W9aP9FvWiyRb1oF0W9aABFvWgtRb1o3UW9aP9FvWj/Rb1o/0W9aP9FvWjxRb1oQ0W9aABFvWgARb1oAEW9aABFvWgHRb1oqkW9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1on0W9aA1FvWgARb1oiEW9aP9FvWieR71pAEW9aAdFvWi7Rb1o/0W9aGBFvWgARb1oGUW9aLdFvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aKVFvWgGRb1oAEW9ZwAAAAAARb1oAEW9aABFvWhBRb1o8EW9aP9FvWj/Rb1o/0W9aP9FvWj9Rb1ookW9aFxFvWjRRb1o/0W9aJ1HvWkARb1oB0W9aLpFvWj/Rb1ouEW9aFRFvWi1Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWjuRb1oPUW9aABFvWgAAAAAAAAAAABEvWgARb1oAEW9aAVFvWijRb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/UW9aP9FvWj/Rb1oqEa9aQBFvWgKRb1oxEW9aP9FvWj/Rb1o/EW9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aJ5FvWgERb1oAES9ZwAAAAAAAAAAAAAAAABFvWgARb1oAEW9aDtFvWjtRb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWjnRb1oaUW9aHpFvWjzRb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWjqRb1oN0W9aABFvWgAAAAAAAAAAAAAAAAAAAAAAES8aABFvWgARb1oA0W9aJtFvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj+Rb1o/kW9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aJZFvWgCRb1oAES9ZwAAAAAAAAAAAAAAAAAAAAAAAAAAAEW9aABFvWgARb1oNEW9aOlFvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWjnRb1oMUW9aABFvWgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARLxnAEW9aABFvWcBRb1olEW9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aI9EvGcBRb1oAES9ZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARb1oAEW9aABFvWgoRb1o0UW9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWjORb1oJUW9aABFvWgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEvGgAQ7lfAEW9aABFvWg3Rb1ovkW9aPpFvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj/Rb1o/0W9aP9FvWj6Rb1ou0W9aDVFvWgARr5pAES8ZgAAAAAAAAAAAAAAAAAAAAAA8AAAD/AAAA/gAAAH4AAAB8AAAAPAAAADgAAAAYAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAYAAAAHAAAADwAAAA+AAAAfgAAAH8AAAD/AAAA8=",
+          "tag" : "Backend"
+        } ]
+      },
+      "terminology" : { },
+      "themes" : [ "https://static.structurizr.com/themes/default/theme.json" ]
+    },
+    "containerViews" : [ {
+      "dimensions" : {
+        "height" : 3220,
+        "width" : 3254
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 745,
+        "y" : 210
+      }, {
+        "id" : "2",
+        "x" : 1795,
+        "y" : 1735
+      }, {
+        "id" : "3",
+        "x" : 1795,
+        "y" : 1080
+      }, {
+        "id" : "5",
+        "x" : 720,
+        "y" : 810
+      }, {
+        "id" : "6",
+        "x" : 1079,
+        "y" : 1408
+      }, {
+        "id" : "7",
+        "x" : 350,
+        "y" : 1405
+      }, {
+        "id" : "8",
+        "x" : 1079,
+        "y" : 2008
+      }, {
+        "id" : "9",
+        "x" : 350,
+        "y" : 2000
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "key" : "DevoxxStoreContainers",
+      "order" : 2,
+      "paperSize" : "A3_Landscape",
+      "relationships" : [ {
+        "id" : "13"
+      }, {
+        "id" : "14"
+      }, {
+        "id" : "15"
+      }, {
+        "id" : "16"
+      }, {
+        "id" : "17"
+      }, {
+        "id" : "18"
+      }, {
+        "id" : "19"
+      }, {
+        "id" : "20"
+      } ],
+      "softwareSystemId" : "4"
+    } ],
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "dimensions" : {
+        "height" : 1900,
+        "width" : 1600
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 574,
+        "y" : 199
+      }, {
+        "id" : "2",
+        "x" : 199,
+        "y" : 1399
+      }, {
+        "id" : "3",
+        "x" : 949,
+        "y" : 1399
+      }, {
+        "id" : "4",
+        "x" : 574,
+        "y" : 799
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "key" : "DevoxxStoreContext",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "10"
+      }, {
+        "id" : "11"
+      }, {
+        "id" : "12"
+      } ],
+      "softwareSystemId" : "4"
+    } ]
+  }
+}

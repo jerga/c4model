@@ -1,0 +1,131 @@
+{
+  "configuration" : { },
+  "description" : "Description",
+  "documentation" : { },
+  "id" : 1,
+  "lastModifiedDate" : "2024-04-13T21:42:47Z",
+  "model" : {
+    "people" : [ {
+      "description" : "Client de la boutique en ligne",
+      "id" : "1",
+      "location" : "Unspecified",
+      "name" : "Web customer",
+      "properties" : {
+        "structurizr.dsl.identifier" : "customer"
+      },
+      "relationships" : [ {
+        "description" : "Uses",
+        "destinationId" : "4",
+        "id" : "5",
+        "properties" : {
+          "structurizr.dsl.identifier" : "6c739e4b-51f0-4b38-8613-96fa4e6a1f18"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "description" : "Gestion des paiements et de la facturation",
+      "documentation" : { },
+      "id" : "2",
+      "location" : "Unspecified",
+      "name" : "Payment & Billing",
+      "properties" : {
+        "structurizr.dsl.identifier" : "payment"
+      },
+      "tags" : "Element,Software System"
+    }, {
+      "description" : "Gestion des stocks et acheminement des commandes",
+      "documentation" : { },
+      "id" : "3",
+      "location" : "Unspecified",
+      "name" : "Logistics & Delivery",
+      "properties" : {
+        "structurizr.dsl.identifier" : "logistics"
+      },
+      "tags" : "Element,Software System"
+    }, {
+      "description" : "Permet aux clients de passer des commandes en ligne",
+      "documentation" : { },
+      "id" : "4",
+      "location" : "Unspecified",
+      "name" : "Devoxx Web Store",
+      "properties" : {
+        "structurizr.dsl.identifier" : "store"
+      },
+      "relationships" : [ {
+        "description" : "Uses",
+        "destinationId" : "2",
+        "id" : "6",
+        "properties" : {
+          "structurizr.dsl.identifier" : "9674dac0-88ec-40b3-b363-85e01a9f3aaa"
+        },
+        "sourceId" : "4",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Uses",
+        "destinationId" : "3",
+        "id" : "7",
+        "properties" : {
+          "structurizr.dsl.identifier" : "e128c62f-13d8-4af5-b267-b80461531784"
+        },
+        "sourceId" : "4",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Software System"
+    } ]
+  },
+  "name" : "Name",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlIHsKCiAgICBtb2RlbCB7CiAgICAgICAgLy8gTW9kw6hsZQogICAgICAgIGN1c3RvbWVyID0gcGVyc29uICJXZWIgY3VzdG9tZXIiICJDbGllbnQgZGUgbGEgYm91dGlxdWUgZW4gbGlnbmUiCgogICAgICAgIHBheW1lbnQgPSBzb2Z0d2FyZVN5c3RlbSAiUGF5bWVudCAmIEJpbGxpbmciICJHZXN0aW9uIGRlcyBwYWllbWVudHMgZXQgZGUgbGEgZmFjdHVyYXRpb24iCiAgICAgICAgbG9naXN0aWNzID0gc29mdHdhcmVTeXN0ZW0gIkxvZ2lzdGljcyAmIERlbGl2ZXJ5IiAiR2VzdGlvbiBkZXMgc3RvY2tzIGV0IGFjaGVtaW5lbWVudCBkZXMgY29tbWFuZGVzIgogICAgICAgIHN0b3JlID0gc29mdHdhcmVTeXN0ZW0gIkRldm94eCBXZWIgU3RvcmUiICJQZXJtZXQgYXV4IGNsaWVudHMgZGUgcGFzc2VyIGRlcyBjb21tYW5kZXMgZW4gbGlnbmUiCgogICAgICAgIC8vIFJlbGF0aW9ucyBkZXB1aXMgLyB2ZXJzIGxlcyBzeXN0w6htZXMKICAgICAgICBjdXN0b21lciAtPiBzdG9yZSAiVXNlcyIKICAgICAgICBzdG9yZSAtPiBwYXltZW50ICJVc2VzIgogICAgICAgIHN0b3JlIC0+IGxvZ2lzdGljcyAiVXNlcyIKICAgIH0KCiAgICB2aWV3cyB7CiAgICAgICAgLy8gRGlhZ3JhbW1lcwogICAgICAgIHN5c3RlbWNvbnRleHQgc3RvcmUgIkRldm94eFN0b3JlQ29udGV4dCIgewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b0xheW91dAogICAgICAgIH0KCiAgICAgICAgLy8gVGjDqG1lcyBldCBzdHlsZXMKICAgICAgICB0aGVtZSBkZWZhdWx0CiAgICB9Cgp9Cg=="
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "lastSavedView" : "DevoxxStoreContext",
+      "styles" : { },
+      "terminology" : { },
+      "themes" : [ "https://static.structurizr.com/themes/default/theme.json" ]
+    },
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "applied" : false,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "3",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "4",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "key" : "DevoxxStoreContext",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "5"
+      }, {
+        "id" : "6"
+      }, {
+        "id" : "7"
+      } ],
+      "softwareSystemId" : "4"
+    } ]
+  }
+}
