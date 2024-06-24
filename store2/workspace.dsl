@@ -6,7 +6,7 @@ workspace {
 
         payment = softwareSystem "Payment & Billing" "Gestion des paiements et de la facturation"
         logistics = softwareSystem "Logistics & Delivery" "Gestion des stocks et acheminement des commandes"
-        store = softwareSystem "Devoxx Web Store" "Permet aux clients de passer des commandes en ligne" {
+        store = softwareSystem "Web Store" "Permet aux clients de passer des commandes en ligne" {
             webapp = container "Web Application" "Site web de la boutique en ligne" "Angular" "Frontend"
             commandBackend = container "Command service" "Gestion des commandes web" "SpringBoot" "Backend"
             catalogBackend = container "Web catalog" "Référentiel des produits de la boutique en ligne" "SpringBoot" "Backend"
@@ -32,12 +32,12 @@ workspace {
 
     views {
         // Diagrammes
-        systemcontext store "DevoxxStoreContext" {
+        systemcontext store "StoreContext" {
             include *
             autoLayout
         }
 
-        container store "DevoxxStoreContainers" {
+        container store "StoreContainers" {
             include *
             autoLayout
         }

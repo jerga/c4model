@@ -6,7 +6,7 @@ workspace {
 
         payment = softwareSystem "Payment & Billing" "Gestion des paiements et de la facturation"
         logistics = softwareSystem "Logistics & Delivery" "Gestion des stocks et acheminement des commandes"
-        store = softwareSystem "Devoxx Web Store" "Permet aux clients de passer des commandes en ligne"
+        store = softwareSystem "Web Store" "Permet aux clients de passer des commandes en ligne"
 
         // Relations depuis / vers les systèmes
         customer -> store "Uses"
@@ -16,7 +16,7 @@ workspace {
 
     views {
         // Diagrammes
-        systemcontext store "DevoxxStoreContext" {
+        systemcontext store "StoreContext" {
             include *
             autoLayout
         }
